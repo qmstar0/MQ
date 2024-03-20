@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/qmstar0/eventio"
+	mq "github.com/qmstar0/MQ"
 	"sync"
 	"sync/atomic"
 	"testing"
@@ -17,7 +17,7 @@ type Event struct {
 }
 
 func Test1(t *testing.T) {
-	queue := eventio.NewQueue[Event]()
+	queue := mq.NewQueue[Event]()
 	subscribe, err := queue.Subscribe(context.Background(), 2)
 	if err != nil {
 		t.Fatal(err)
@@ -48,7 +48,7 @@ func Test1(t *testing.T) {
 
 // 测试已发布的消息是否能保证消费
 func Test2(t *testing.T) {
-	queue := eventio.NewQueue[Event]()
+	queue := mq.NewQueue[Event]()
 	subscribe, err := queue.Subscribe(context.Background(), 2)
 	if err != nil {
 		t.Fatal(err)
@@ -93,7 +93,7 @@ func Test2(t *testing.T) {
 
 func Test3(t *testing.T) {
 	background := context.Background()
-	queue := eventio.NewQueue[Event]()
+	queue := mq.NewQueue[Event]()
 
 	ctx1, cc1 := context.WithTimeout(background, time.Second*1)
 	defer cc1()
