@@ -1,4 +1,4 @@
-package eventio
+package mq
 
 type Message[M any] interface {
 	Payload() M

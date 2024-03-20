@@ -1,4 +1,4 @@
-package eventio
+package mq
 
 import (
 	"context"

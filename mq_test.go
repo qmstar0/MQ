@@ -1,4 +1,4 @@
-package eventio_test
+package mq_test
 
 import (
 	"context"
